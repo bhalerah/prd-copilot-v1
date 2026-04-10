@@ -1,0 +1,14 @@
+{
+  "name": "prd-copilot-v1",
+  "version": "1.0.0",
+  "description": "AI Product Requirements Copilot",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.56.0"
+  }
+}
