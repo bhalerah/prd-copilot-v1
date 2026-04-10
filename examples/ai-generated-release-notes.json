@@ -1,0 +1,138 @@
+{
+  "analysis": {
+    "feature_name": "AI-Generated Release Notes",
+    "target_user": "Product managers and engineering managers",
+    "problem_statement": "Release notes are inconsistent, manual, and often delayed, leading to miscommunication and inefficiencies within product teams.",
+    "business_goal": "To streamline the release notes process, ensuring consistency and timeliness while reducing the manual workload for product and engineering managers.",
+    "constraints": [
+      "Must generate notes from existing meeting notes and Jira summaries",
+      "Requires minimal manual editing post-generation"
+    ],
+    "assumptions": [
+      "Users have access to structured meeting notes and Jira summaries",
+      "AI can accurately interpret and summarize the provided data"
+    ],
+    "open_questions": [
+      "What level of detail is required in the release notes?",
+      "How will users provide feedback on the generated notes?",
+      "What specific formats or templates do users prefer for release notes?"
+    ]
+  },
+  "draft": {
+    "title": "AI-Generated Release Notes",
+    "problem_statement": "Release notes are inconsistent, manual, and often delayed, leading to miscommunication and inefficiencies within product teams.",
+    "goals": [
+      "Streamline the release notes process",
+      "Ensure consistency and timeliness of release notes",
+      "Reduce manual workload for product and engineering managers"
+    ],
+    "non_goals": [
+      "Create release notes without any input from users",
+      "Replace all manual processes related to product management"
+    ],
+    "target_users": [
+      "Product managers",
+      "Engineering managers"
+    ],
+    "user_stories": [
+      {
+        "story": "As a product manager, I want to generate release notes from meeting notes and Jira summaries so that I can save time and ensure consistency.",
+        "acceptance_criteria": [
+          "Release notes are generated from structured meeting notes and Jira summaries",
+          "Generated notes require minimal manual editing",
+          "Users can review and approve the generated notes before distribution"
+        ]
+      }
+    ],
+    "risks": [
+      "AI may misinterpret data leading to inaccurate release notes",
+      "Users may not have structured meeting notes or Jira summaries available"
+    ],
+    "dependencies": [
+      "Access to structured meeting notes",
+      "Access to Jira summaries"
+    ],
+    "success_metrics": [
+      "Reduction in time spent creating release notes",
+      "Increase in user satisfaction with the release notes process",
+      "Decrease in the number of revisions required post-generation"
+    ],
+    "open_questions": [
+      "What level of detail is required in the release notes?",
+      "How will users provide feedback on the generated notes?",
+      "What specific formats or templates do users prefer for release notes?"
+    ]
+  },
+  "review": {
+    "quality_score": 6,
+    "strengths": [
+      "Clearly defined problem statement",
+      "Specific goals and non-goals outlined",
+      "Identified target users and user stories",
+      "Defined success metrics that are relevant to the goals"
+    ],
+    "gaps": [
+      "Acceptance criteria could be more detailed and specific",
+      "Metrics lack quantifiable targets (e.g., specific percentage reduction in time)",
+      "Risks do not cover potential user resistance or training needs",
+      "Dependencies are not fully elaborated (e.g., what if access is denied?)"
+    ],
+    "improvements": [
+      "Enhance acceptance criteria with specific examples of acceptable release notes",
+      "Add quantifiable targets to success metrics (e.g., reduce time by 50%)",
+      "Include additional risks related to user adoption and training requirements",
+      "Clarify dependencies with contingency plans in case of access issues"
+    ]
+  },
+  "finalPrd": {
+    "title": "AI-Generated Release Notes",
+    "problem_statement": "Release notes are inconsistent, manual, and often delayed, leading to miscommunication and inefficiencies within product teams.",
+    "goals": [
+      "Streamline the release notes process",
+      "Ensure consistency and timeliness of release notes",
+      "Reduce manual workload for product and engineering managers"
+    ],
+    "non_goals": [
+      "Create release notes without any input from users",
+      "Replace all manual processes related to product management"
+    ],
+    "target_users": [
+      "Product managers",
+      "Engineering managers"
+    ],
+    "user_stories": [
+      {
+        "story": "As a product manager, I want to generate release notes from meeting notes and Jira summaries so that I can save time and ensure consistency.",
+        "acceptance_criteria": [
+          "Release notes are generated from structured meeting notes and Jira summaries",
+          "Generated notes require minimal manual editing, with examples of acceptable formats provided",
+          "Users can review and approve the generated notes before distribution, with a clear approval process outlined"
+        ]
+      }
+    ],
+    "risks": [
+      "AI may misinterpret data leading to inaccurate release notes",
+      "Users may not have structured meeting notes or Jira summaries available",
+      "Potential user resistance to adopting the new process",
+      "Training may be required for users to effectively utilize the tool"
+    ],
+    "dependencies": [
+      "Access to structured meeting notes",
+      "Access to Jira summaries",
+      {
+        "dependency": "Access to necessary data sources",
+        "contingency_plan": "Identify alternative data sources or manual entry options if access is denied"
+      }
+    ],
+    "success_metrics": [
+      "Reduction in time spent creating release notes by 50%",
+      "Increase in user satisfaction with the release notes process by 30%",
+      "Decrease in the number of revisions required post-generation by 40%"
+    ],
+    "open_questions": [
+      "What level of detail is required in the release notes?",
+      "How will users provide feedback on the generated notes?",
+      "What specific formats or templates do users prefer for release notes?"
+    ]
+  }
+}
