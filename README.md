@@ -52,3 +52,8 @@ The system follows a multi-step AI agent pipeline:
 ---
 
 ## 📂 Project Structure
+## 📄 Sample Output
+
+Example generated PRD:
+
+👉 [AI Generated Release Notes PRD](outputs/ai-generated-release-notes.md)
