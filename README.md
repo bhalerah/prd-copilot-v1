@@ -30,8 +30,11 @@ This project is an **agentic AI workflow** that transforms a rough feature idea 
 5. Suggests improvements  
 6. Exports to PDF  
 
-*(Add screenshots or GIF here for maximum impact)*
+### UI
+![UI Screenshot](./screenshots/PRD-UI.png)
 
+### PDF Output
+![PDF Screenshot](./screenshots/PDF-Output.pdf)
 ---
 
 ## 🧠 How It Works
@@ -91,7 +94,22 @@ prompt.js → LLM prompts (core logic)
 format.js → Markdown generation
 
 ---
+## ⚙️ Running Locally
 
+### Backend (bash)
+- cd src
+- npm install
+- node server.js
+
+###  Frontend (bash)
+- cd ui
+- npm install
+- npm run dev
+
+Then open:
+http://localhost:5173
+
+---
 ## 🐛 Debugging Guide
 
 | Issue | Where to Check |
@@ -122,16 +140,6 @@ It’s a **product thinking system** that:
 - Section-level regeneration  
 - Editable PRD blocks  
 - Jira / Notion integrations  
-
----
-
-## 📸 Screenshots
-
-### UI
-![UI Screenshot](./screenshots/ui.png)
-
-### PDF Output
-![PDF Screenshot](./screenshots/pdf.png)
 
 ---
 
