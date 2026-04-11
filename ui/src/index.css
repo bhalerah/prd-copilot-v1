@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+.print-only-problem {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #111827 !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .prd-panel,
+  .prd-panel * {
+    visibility: visible;
+  }
+
+  .prd-panel {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .app-header,
+  .left-panel,
+  .workflow-panel,
+  button,
+  .prd-meta,
+  .prd-title-label,
+  .prd-status-badge {
+    display: none !important;
+  }
+
+  .print-only-problem {
+    display: block !important;
+    margin-bottom: 12pt !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: white !important;
+  }
+
+  .prd-problem-section {
+    display: none !important;
+  }
+
+  .prd-section {
+    border: 1px solid #d1d5db !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+    padding: 12pt !important;
+    margin-bottom: 12pt !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .prd-panel .rounded-2xl,
+  .prd-panel .rounded-3xl {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  .prd-panel .bg-slate-50,
+  .prd-panel .bg-white,
+  .prd-panel .bg-emerald-50,
+  .prd-panel .bg-amber-50,
+  .print-only-problem {
+    background: white !important;
+  }
+
+  .prd-panel .text-emerald-700,
+  .prd-panel .text-amber-700,
+  .prd-panel .text-blue-700,
+  .prd-panel .text-slate-500,
+  .prd-panel .text-slate-600,
+  .prd-panel .text-slate-700,
+  .prd-panel .text-slate-900,
+  .print-only-problem {
+    color: #111827 !important;
+  }
+
+  .prd-panel .border-emerald-200,
+  .prd-panel .border-amber-200,
+  .prd-panel .border-slate-200,
+  .prd-panel .border-slate-100,
+  .print-only-problem {
+    border-color: #d1d5db !important;
+  }
+
+  .prd-panel h2,
+  .prd-panel h3,
+  .prd-panel h4,
+  .print-only-problem h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .prd-panel ul,
+  .prd-panel li,
+  .prd-panel p,
+  .print-only-problem p,
+  .print-only-problem li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
