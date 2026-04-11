@@ -39,7 +39,7 @@ Structured, review-ready output with quality scoring and improvement suggestions
 
 [PRD Preview](./screenshots/UI-Output.md)
 
-👉 [View Full PDF](./screenshots/PDF-Output.pdf)
+👉 [Download Full PRD PDF](./screenshots/PDF-Output.pdf)
 ---
 
 ## 🧠 How It Works
