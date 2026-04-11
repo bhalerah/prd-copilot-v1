@@ -22,45 +22,55 @@ Return valid JSON only in this exact shape:
 
 export function buildDraftPrompt(analysis) {
   return `
-You are a senior product director at a top technology company.
+You are a senior product director.
 
-Your task is to write a high-quality Product Requirements Document (PRD) from the structured input below.
+Write a strong first-draft PRD from the structured input below.
 
 Structured input:
-${JSON.stringify(analysis, null, 2)}
+${JSON.stringify(analysis)}
 
 Instructions:
+- Be specific and practical
 - Avoid generic language
-- Use specific, measurable product language
-- Make reasonable assumptions where details are missing, and state them clearly
-- Think in terms of systems, workflows, tradeoffs, rollout, and operational realism
-- Write like an experienced product leader preparing a document for engineering, design, and business stakeholders
+- Make reasonable assumptions where details are missing
+- Keep the document concise but useful
+- Focus on clarity for product, engineering, design, and operations stakeholders
+- Avoid placeholder entries such as "Phase 1", "Phase 2", "Phase 3" without meaningful detail
 
-You MUST include:
-1. A clear problem statement with concrete impact
-2. Measurable goals with numbers or percentages where possible
-3. Non-goals to define scope boundaries
-4. Target users
-5. Assumptions
-6. End-to-end workflow (input → processing → output → user action)
-7. User stories with strong acceptance criteria
-8. Risks
-9. Dependencies
-10. Success metrics
-11. Open questions
-12. Tradeoffs
-13. Risk mitigation strategies
-14. Rollout strategy
-15. Operational constraints
-16. Measurement definitions for every metric
-17. Prioritization rationale
+Include:
+1. title
+2. problem statement
+3. goals
+4. non-goals
+5. target users
+6. assumptions
+7. workflow
+8. user stories with acceptance criteria
+9. risks
+10. dependencies
+11. success metrics
+12. open questions
+13. tradeoffs
+14. rollout plan
 
-For every success metric, define exactly:
-- metric name
-- how it is measured
+For workflow, every item must include:
+- step
+- action
+- output
+- user_interaction
+
+For success_metrics, every metric must include:
+- metric_name
+- how_measured
 - baseline
 - target
 - timeframe
+
+For rollout_plan, every phase must include:
+- phase
+- duration
+- description
+- success_criteria
 
 Return valid JSON only in this exact shape:
 {
@@ -70,7 +80,14 @@ Return valid JSON only in this exact shape:
   "non_goals": [],
   "target_users": [],
   "assumptions": [],
-  "workflow": [],
+  "workflow": [
+    {
+      "step": "",
+      "action": "",
+      "output": "",
+      "user_interaction": ""
+    }
+  ],
   "user_stories": [
     {
       "story": "",
@@ -79,43 +96,67 @@ Return valid JSON only in this exact shape:
   ],
   "risks": [],
   "dependencies": [],
-  "success_metrics": [],
+  "success_metrics": [
+    {
+      "metric_name": "",
+      "how_measured": "",
+      "baseline": "",
+      "target": "",
+      "timeframe": ""
+    }
+  ],
   "open_questions": [],
   "tradeoffs": [],
-  "risk_mitigations": [],
-  "rollout_plan": [],
-  "operational_constraints": [],
-  "metric_definitions": [],
-  "prioritization_rationale": []
+  "rollout_plan": [
+    {
+      "phase": "",
+      "duration": "",
+      "description": "",
+      "success_criteria": ""
+    }
+  ]
 }
 `;
 }
 
 export function buildReviewPrompt(prd) {
   return `
-You are a product director reviewing a PRD for leadership readiness.
+You are a pragmatic product lead doing a lightweight quality review of a draft PRD.
 
-Critique this PRD specifically for:
-- ambiguity in scope
-- weak or undefined metrics
-- missing rollout or adoption planning
-- unaddressed operational risks
-- lack of prioritization logic
-- insufficient mitigation planning
-- weak workflow clarity
+Score the draft fairly as a first draft, not as a final executive-ready document.
+
+Focus only on the most important issues:
+- unclear problem or scope
+- weak or missing metrics
 - vague acceptance criteria
+- missing rollout clarity
 
-Be direct and concrete. Do not be polite. Focus on the most important gaps.
+Be concise.
+List at most 3 gaps.
+List at most 3 improvements.
+
+Scoring guidance:
+- 8-10 = strong draft, only minor refinements needed
+- 5-7 = usable draft, but needs meaningful improvement
+- 0-4 = weak draft with major gaps
+
+For each improvement, return:
+- issue
+- recommendation
 
 PRD:
-${JSON.stringify(prd, null, 2)}
+${JSON.stringify(prd)}
 
-Return valid JSON only in this exact shape:
+Return JSON:
 {
   "quality_score": 0,
-  "strengths": [],
   "gaps": [],
-  "improvements": []
+  "improvements": [
+    {
+      "issue": "",
+      "recommendation": ""
+    }
+  ]
 }
 `;
 }
@@ -124,30 +165,57 @@ export function buildFinalizePrompt(prd, review) {
   return `
 You are an expert product requirements editor.
 
-Improve the PRD using the review feedback below.
+Your task is to improve only the weak or incomplete parts of this PRD using the review feedback.
 
-Original PRD:
-${JSON.stringify(prd, null, 2)}
+Draft PRD:
+${JSON.stringify(prd)}
 
 Review feedback:
-${JSON.stringify(review, null, 2)}
+${JSON.stringify(review)}
 
-You must resolve the reviewer’s major gaps in the final PRD.
-Do not preserve vague objects when a human-readable statement can be produced.
-For goals, workflow, rollout, and metric definitions, write executive-readable entries instead of raw JSON-style structures.
-Strengthen metrics with clear definitions and measurement methods.
-Ensure rollout includes phases, success criteria, and adoption signals.
-Ensure acceptance criteria are testable and specific.
+Instructions:
+- Preserve strong sections exactly as they are
+- Only return sections that need improvement
+- Do not rewrite the full PRD
+- If a section is already strong, omit it from the output
+- Focus especially on weak or incomplete rollout, metrics, workflow, risk mitigations, operational constraints, and prioritization rationale
+- Keep improvements concise and executive-readable
+- Avoid placeholder entries such as "Phase 1", "Phase 2", "Phase 3" without meaningful detail
+- If risks are present, you must return at least one concrete risk_mitigation entry.
+- Do not leave risk_mitigations empty when risks are listed.
 
-Return valid JSON only in this exact shape:
+If you improve workflow, each item must include:
+- step
+- action
+- output
+- user_interaction
+
+If you improve success_metrics, each metric must include:
+- metric_name
+- how_measured
+- baseline
+- target
+- timeframe
+
+If you improve rollout_plan, each phase must include:
+- phase
+- duration
+- description
+- success_criteria
+
+Return valid JSON only.
+Return only the sections that need improvement, in this shape:
 {
-  "title": "",
   "problem_statement": "",
   "goals": [],
-  "non_goals": [],
-  "target_users": [],
-  "assumptions": [],
-  "workflow": [],
+  "workflow": [
+    {
+      "step": "",
+      "action": "",
+      "output": "",
+      "user_interaction": ""
+    }
+  ],
   "user_stories": [
     {
       "story": "",
@@ -155,15 +223,29 @@ Return valid JSON only in this exact shape:
     }
   ],
   "risks": [],
-  "dependencies": [],
-  "success_metrics": [],
-  "open_questions": [],
+  "success_metrics": [
+    {
+      "metric_name": "",
+      "how_measured": "",
+      "baseline": "",
+      "target": "",
+      "timeframe": ""
+    }
+  ],
   "tradeoffs": [],
   "risk_mitigations": [],
-  "rollout_plan": [],
+  "rollout_plan": [
+    {
+      "phase": "",
+      "duration": "",
+      "description": "",
+      "success_criteria": ""
+    }
+  ],
   "operational_constraints": [],
   "metric_definitions": [],
-  "prioritization_rationale": []
+  "prioritization_rationale": [],
+  "open_questions": []
 }
 `;
 }

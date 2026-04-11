@@ -26,12 +26,13 @@ function extractJson(text) {
 export async function generateJson(prompt) {
   const response = await client.chat.completions.create({
     model: MODEL,
-    temperature: 0.3,
+    temperature: 0.1,
+    response_format: { type: "json_object" },
     messages: [
       {
         role: "system",
         content:
-          "You are a precise product copilot. Always return valid JSON only."
+          "You are a precise product copilot. Return only valid JSON that exactly follows the requested structure."
       },
       {
         role: "user",
@@ -45,5 +46,5 @@ export async function generateJson(prompt) {
     throw new Error("Empty response from model.");
   }
 
-  return extractJson(content);
+  return JSON.parse(content);
 }
