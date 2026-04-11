@@ -1,135 +1,112 @@
-# PRD Copilot v1
+# AI-Driven PRD Generator & Refiner
 
-An AI-powered product copilot that converts unstructured feature ideas into structured, executive-ready Product Requirement Documents (PRDs) using a multi-step agent workflow.
+## 🚀 Agentic Workflow for Structured Product Thinking
 
----
+Most product managers don’t struggle with ideas.  
+They struggle with turning ideas into something a team can actually build.
 
-## 🚀 Overview
-
-PRD Copilot v1 simulates how strong product leaders think.
-
-Instead of relying on a single LLM prompt, it breaks the workflow into multiple specialized agents that:
-
-- structure ambiguity
-- generate product artifacts
-- critique quality
-- refine outputs
-
-This creates a **critique-and-revision loop**, significantly improving output quality and realism.
+This project is an **agentic AI workflow** that transforms a rough feature idea into a structured, review-ready Product Requirements Document (PRD).
 
 ---
 
-## 🎯 What It Generates
+## ✨ What This Does
 
-From simple inputs like:
-- Feature idea
-- Target user
-- Business problem
-- Constraints
-
-The system produces:
-
-- Clear problem statement with impact
-- Measurable goals and non-goals
-- End-to-end workflow (system + user flow)
-- User stories with acceptance criteria
-- Risks and mitigation strategies
-- Dependencies and operational constraints
-- Rollout plan (phased)
-- Success metrics with definitions
-- Tradeoffs and prioritization rationale
-
-👉 Outputs are generated in:
-- Markdown (human-readable PRD)
-- JSON (structured for reuse)
+- Converts rough ideas → structured PRDs
+- Applies automated quality scoring
+- Identifies gaps in clarity, metrics, and scope
+- Generates actionable improvements
+- Exports to UI, Markdown, and PDF
 
 ---
 
-## 🧠 Architecture
+## 🧠 How It Works
 
-The system follows a multi-step AI agent pipeline:
+Instead of a single prompt, this system uses a **multi-stage pipeline**:
+Analyze → Draft → Review → Refine → Output
 
-### 1. Analyzer Agent
-- Converts raw input into structured product thinking
-- Extracts problem, users, constraints, assumptions
+### Pipeline Stages
 
-### 2. Drafter Agent
-- Generates a full PRD
-- Includes goals, user stories, workflows, metrics
-
-### 3. Reviewer Agent
-- Critiques PRD quality like a product director
-- Identifies gaps, weak metrics, unclear logic
-- Assigns a quality score
-
-### 4. Refiner Agent
-- Improves PRD using structured feedback
-- Produces higher-quality, executive-ready output
+- **Analysis Agent** → Understands intent and context  
+- **Draft Agent** → Generates full PRD  
+- **Review Agent** → Scores quality + identifies gaps  
+- **Finalize Agent** → Refines using feedback  
+- **Formatter** → Converts to Markdown/UI/PDF  
 
 ---
 
-## 🔄 Workflow
-Input → Analyze → Draft → Review → Refine → Format → Output
+## 🏗️ Tech Stack
 
-This mirrors real-world product development:
-- ideation
-- structuring
-- critique
-- iteration
+**Frontend**
+- React (Vite)
+- Tailwind CSS
 
----
-
-## ⚙️ Tech Stack
-
+**Backend**
 - Node.js
-- OpenAI API
-- CLI-based interaction
-- JSON + Markdown outputs
+- Express
+- LLM APIs (OpenAI or equivalent)
+
+**Data**
+- Structured JSON pipeline
+- Deterministic formatting layer
 
 ---
 
-## 📄 Sample Output
+## 📊 Output Example
 
-👉 [AI Generated Release Notes PRD](outputs/ai-generated-release-notes.md)
+- PRD Status: *Minor review needed*
+- Quality Score: *6*
+- Gap Count: *3*
 
-This example demonstrates:
-- structured thinking
-- measurable goals
-- system-level workflow
-- risk + rollout planning
-
----
-
-## 💡 Key Design Decisions
-
-- **Multi-agent over single prompt** → improves quality and reasoning
-- **Critique loop** → simulates senior product review
-- **Structured JSON schema** → ensures consistency
-- **Custom formatter** → removes raw JSON and improves readability
+### Suggested Improvements
+- Unclear problem → refine scope  
+- Weak metrics → add measurable success criteria  
+- Vague acceptance criteria → increase specificity  
 
 ---
 
-## 🚧 Future Improvements
+## 🧩 Key Files
+/frontend
+PRDAgentFlowUI.jsx → UI rendering + improvements
 
-- Web UI for interactive PRD generation
+/backend
+prompt.js → LLM prompts (core logic)
+format.js → Markdown generation
+
+---
+
+## 🐛 Debugging Guide
+
+| Issue | Where to Check |
+|------|---------------|
+| UI blank | React component |
+| Missing improvements | review object |
+| Bad output quality | prompt.js |
+| Formatting issues | format.js |
+
+---
+
+## 🎯 Why This Matters
+
+This is not a PRD generator.
+
+It’s a **product thinking system** that:
+- standardizes how PRDs are created
+- reduces cognitive load
+- improves consistency across teams
+
+---
+
+## 🔮 Roadmap
+
+- Apply suggestions (auto-refine sections)
+- Section-level regeneration
+- Editable PRD blocks
 - Jira / Notion integrations
-- RAG-based context enrichment
-- Template customization
-- Improved scoring and refinement logic
 
 ---
 
-## 👤 Author
+## 📌 Positioning
 
-Rahul Bhalerao  
-Senior Product Leader | Cloud Platforms | AI Products | DevSecOps  
+**AI Product System: Agentic PRD Generator**
 
----
-
-## 🧭 Positioning
-
-This project demonstrates:
-- Product thinking + AI integration
-- Multi-step agent system design
-- Translating ambiguity into structured execution
-- Building practical AI workflows for real use cases
+From idea → structured product thinking.
