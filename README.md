@@ -33,8 +33,13 @@ This project is an **agentic AI workflow** that transforms a rough feature idea 
 ### UI
 ![UI Screenshot](./screenshots/PRD-UI.png)
 
-### PDF Output
-![PDF Screenshot](./screenshots/PDF-Output.pdf)
+### 🔹 Generated PRD (Markdown / PDF)
+
+Structured, review-ready output with quality scoring and improvement suggestions
+
+[PRD Preview](./screenshots/UI-Output.md)
+
+👉 [View Full PDF](./screenshots/PDF-Output.pdf)
 ---
 
 ## 🧠 How It Works
