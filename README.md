@@ -99,8 +99,40 @@ prompt.js → LLM prompts (core logic)
 format.js → Markdown generation
 
 ---
+
+## 🔧 Setup
+
+1. Clone the repository  
+2. Create a `.env` file in the root directory  
+3. Add your OpenAI API key:
+
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+4. Install dependencies and run the application  
+
+---
+
+## 🔐 Environment Variables
+
+This project requires an OpenAI API key.
+
+- Your API key is **not stored or shared**
+- Each user must provide their own key via `.env`
+
+A sample configuration is available in:
+
+```
+.env.example
+```
+
+---
+
+> Designed as a structured, agentic workflow for PRD generation — not just a prompt-based tool.
 ## ⚙️ Running Locally
 
+---
 ### Backend (bash)
 - cd src
 - npm install
