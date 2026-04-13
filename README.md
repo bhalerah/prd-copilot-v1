@@ -45,8 +45,8 @@ Structured, review-ready output with quality scoring and improvement suggestions
 ## 🧠 How It Works
 
 Analyze → Draft → Review → Refine → Output
-
 Each stage hands off to the next, creating a **critique → improve loop** similar to how strong product teams operate.
+
 ---
 
 ## ⚡ Why This Is Different
